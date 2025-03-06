@@ -1,4 +1,7 @@
 BDD
+
+FACTURE 
+
 Attribuer une facture à un utilisateur(POST/:id)
 En tant qu'administrateur,
 Je veux pouvoir attribuer à un utilisateur une facture afin de pouvoir lié ces informations.
@@ -21,9 +24,6 @@ Critères d'acceptation :
   Si les données saisies sont invalides, le systeme renvoie une erreur 400 avec un retour sur la validation.
   La facture est bien modifié dans la base de donnée attribué à l'utilisateur.
 
--------------------------
-TDD
-
 Supression d'une facture d'un utilisateur(DELETE/:id)
 En tant qu'administrateur,
 Je veux pouvoir supprimer une facture d'un utilisateur afin de pouvoir supprimer une erreur.
@@ -32,5 +32,53 @@ Critères d'acceptation:
   Le systeme suprime la facture sur la base de l'id de l'utilsiateur.
   Une requête valide contient uniquement l'id de l'utilisateur.
   Si l'ID de l'utilisateur n'existe pas, le systeme renvoie une erreur 404.
-  Si la facture n'existe pas, le ssyteme renvoie une erreur 404.
+  Si la facture n'existe pas, le syteme renvoie une erreur 404.
   Si la facture est supprimer renvoie 200.
+
+Lecture d'une facture d'un utilisateur(GET/:id)
+En tant qu'un administrateur,
+Je veux pouvoir lire une facture d'un utilisateur afin de pouvoir avoir les informations de la facture.
+
+Critères d'acceptation:
+  Le systeme me renvoie les informations de la facture de l'utilisateur.
+  Une requête valide contient uniquement l'id de l'utilisateur.
+  Si l'Id de l'utilisateur n'existe pas, le systeme renvoie une erreur 404.
+  Si la facture n'existe pas, le systeme renvoie une erreur 404.
+  Si la facture est lue renvoie 200.
+
+PROJECTS
+
+Création d'un projet(POST/projetcts)
+En tant qu’administrateur, je veux pouvoir créer un projet avec un titre, une description et un statut, afin de suivre les projets en cours.
+
+Critères d’acceptation :
+La requête doit contenir au minimum les champs title et description.
+Si l’un des champs requis est manquant, le système renvoie une erreur 400.
+Le projet est créé avec un statut par défaut ("active") si non spécifié.
+La réponse renvoie un code 201 avec les informations du projet créé.
+
+Lecture d’un projet (GET /projects/<id>)
+
+En tant qu’administrateur, je veux pouvoir consulter les détails d’un projet en fournissant son identifiant, afin d’avoir toutes les informations sur le projet.
+
+Critères d’acceptation :
+Si l’identifiant du projet n’existe pas, le système renvoie une erreur 404.
+En cas de succès, le système renvoie un code 200 et les informations du projet.
+
+Modification d’un projet (PUT /projects/<id>)
+En tant qu’administrateur, je veux pouvoir modifier les informations d’un projet existant (titre, description, statut) afin de mettre à jour son état.
+
+Critères d’acceptation :
+La requête doit contenir uniquement les champs autorisés (title, description, status).
+Si un champ invalide est envoyé, le système renvoie une erreur 400.
+Si l’identifiant du projet n’existe pas, le système renvoie une erreur 404.
+En cas de succès, le système renvoie un code 200 avec le projet modifié.
+
+Suppression d’un projet (DELETE /projects/<id>)
+En tant qu’administrateur, je veux pouvoir supprimer un projet afin d’effacer un projet obsolète ou erroné.
+Critères d’acceptation :
+Si l’identifiant du projet n’existe pas, le système renvoie une erreur 404.
+En cas de suppression réussie, le système renvoie un code 200 avec un message de confirmation.
+
+-------------------------
+TDD
