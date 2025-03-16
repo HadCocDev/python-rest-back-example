@@ -82,3 +82,42 @@ En cas de suppression réussie, le système renvoie un code 200 avec un message 
 
 -------------------------
 TDD
+
+Attribution d'un contrat à un utilisateur (POST /users/<user_id>/contracts)
+En tant que programmeur,
+Je veux pouvoir attribuer un contrat à un utilisateur en fournissant son identifiant et les informations du contrat (numéro de contrat, date de début, date de fin, conditions),
+Afin d’enregistrer les engagements contractuels de FIBRUS pour cet utilisateur.
+
+Critères d’acceptation :
+La requête doit contenir au minimum les champs contract_number, start_date, end_date et terms.
+Si l’identifiant de l’utilisateur n’existe pas, le système renvoie une erreur 404.
+Le contrat est créé et associé à l’utilisateur.
+La réponse renvoie un code 201 avec les informations du contrat créé.
+
+
+Lecture d'un contrat utilisateur (GET /users/<user_id>/contracts/<contract_id>)
+En tant que programmeur,
+Je veux pouvoir consulter les détails d’un contrat d’un utilisateur en fournissant l’identifiant de l’utilisateur et du contrat,
+Afin d’avoir toutes les informations relatives à cet engagement.
+Critères d’acceptation :
+Si l’identifiant de l’utilisateur ou celui du contrat n’existe pas, le système renvoie une erreur 404.
+En cas de succès, le système renvoie un code 200 et les informations du contrat.
+
+Modification d'un contrat utilisateur (PUT /users/<user_id>/contracts/<contract_id>)
+En tant que programmeur,
+Je veux pouvoir modifier les informations d’un contrat existant d’un utilisateur (numéro de contrat, dates, conditions),
+Afin de mettre à jour l’engagement contractuel en fonction des ajustements convenus avec FIBRUS.
+
+Critères d’acceptation :
+La requête doit contenir uniquement les champs autorisés (contract_number, start_date, end_date, terms).
+Si l’identifiant de l’utilisateur ou celui du contrat n’existe pas, le système renvoie une erreur 404.
+En cas de succès, le système renvoie un code 200 avec le contrat modifié.
+
+Suppression d'un contrat utilisateur (DELETE /users/<user_id>/contracts/<contract_id>)
+En tant que programmeur,
+Je veux pouvoir supprimer un contrat attribué à un utilisateur,
+Afin d’effacer un enregistrement erroné ou obsolète pour FIBRUS.
+
+Critères d’acceptation :
+Si l’identifiant de l’utilisateur ou celui du contrat n’existe pas, le système renvoie une erreur 404.
+En cas de suppression réussie, le système renvoie un code 200 avec un message de confirmation.
